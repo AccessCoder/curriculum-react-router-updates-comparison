@@ -1,39 +1,32 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Counter from "./Counter.tsx";
 import Counter2 from "./Counter2.tsx";
-import {NavLink, Routes, useRoutes} from "react-router-dom";
+import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
+import Navbar from "./Navbar.tsx";
 
 function App() {
 
+    const customRoutes = createBrowserRouter([
+        {
+            path: '/',
+            element: <Counter/>,
+            errorElement: <div>Oops, something went wrong!</div>,
+        },
+        {
+            path: '/multiply',
+            element: <Counter2/>,
+            errorElement: <div>Oops, something went wrong!</div>,
+        },
+    ]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <>
-        <NavLink to={"/"}>Main</NavLink>
-        <NavLink to={"/multiply"}>Multiply</NavLink>
-      </>
-      <AppRoutes/>
-    </>
-  )
+    return (
+        <>
+            <Navbar/>
+            <RouterProvider router={customRoutes}/>
+        </>
+    )
 }
 
 export default App
 
-const routesConfig = [
-  { path: "/", element: <Counter /> },
-  { path: "/multiply", element: <Counter2 /> },
-];
 
-function AppRoutes() {
-  return useRoutes(routesConfig);
-}
