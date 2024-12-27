@@ -1,6 +1,9 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {NavLink, Route, Routes} from "react-router-dom";
+import Counter from "./Counter.tsx";
+import Counter2 from "./Counter2.tsx";
 
 function App() {
 
@@ -15,7 +18,14 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-
+        <>
+            <NavLink to={"/"}>MainPage</NavLink>
+            <NavLink to={"/multiply"}>MultiplyPage</NavLink>
+        </>
+      <Routes>
+        <Route path={"/"} element={<Counter/>}/>
+        <Route path={"/multiply"} element={<Counter2/>}/>
+      </Routes>
     </>
   )
 }
