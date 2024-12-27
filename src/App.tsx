@@ -1,6 +1,8 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Counter from "./Counter.tsx";
+import Counter2 from "./Counter2.tsx";
 
 function App() {
 
@@ -21,3 +23,12 @@ function App() {
 }
 
 export default App
+
+const routesConfig = [
+  { path: "/", element: <Counter /> },
+  { path: "/about", element: <Counter2 /> },
+];
+
+function AppRoutes() {
+  return useRoutes(routesConfig);
+}
