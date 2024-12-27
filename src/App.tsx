@@ -3,6 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Counter from "./Counter.tsx";
 import Counter2 from "./Counter2.tsx";
+import {NavLink, Routes, useRoutes} from "react-router-dom";
 
 function App() {
 
@@ -17,7 +18,11 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-
+      <>
+        <NavLink to={"/"}>Main</NavLink>
+        <NavLink to={"/multiply"}>Multiply</NavLink>
+      </>
+      <AppRoutes/>
     </>
   )
 }
@@ -26,7 +31,7 @@ export default App
 
 const routesConfig = [
   { path: "/", element: <Counter /> },
-  { path: "/about", element: <Counter2 /> },
+  { path: "/multiply", element: <Counter2 /> },
 ];
 
 function AppRoutes() {
